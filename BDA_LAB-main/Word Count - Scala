@@ -1,0 +1,17 @@
+val textFile = sc.textFile(&quot;/home/bhoom/Desktop/wc.txt&quot;)
+val counts = textFile.flatMap(line =&gt; line.split(&quot; &quot;)).map(word =&gt; (word,
+1)).reduceByKey(_ +_)
+import scala.collection.immutable.ListMap
+val sorted=ListMap(counts.collect.sortWith(_._2 &gt; _._2):_*)// sort in descending
+order based
+on values
+println(sorted)
+for((k,v)&lt;-sorted)
+{
+if(v&gt;4)
+{
+print(k+&quot;,&quot;)
+print(v)
+println()
+}
+}
